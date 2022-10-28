@@ -1,0 +1,8 @@
+node_modules/*
+.secret*
+package-lock.json
+yarn.lock
+artifacts/*
+cache/*
+.DS_store
+
