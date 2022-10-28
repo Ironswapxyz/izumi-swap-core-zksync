@@ -16,11 +16,11 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const SwapX2YModuleFactory = await deployer.loadArtifact("SwapX2YModule");
 
   const deploymentFee = await deployer.estimateDeployFee(SwapX2YModuleFactory, []);
-  if (deploymentFee.gte(0.3)) {
+  const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
+  if (Number(parsedFee) >= 0.3) {
     console.log('too much fee, revert!')
     return
   }
-  const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
   console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
 
   const swapX2YModule = await deployer.deploy(SwapX2YModuleFactory, []);

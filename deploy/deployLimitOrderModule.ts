@@ -16,11 +16,11 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const LimitOrderModuleFactory = await deployer.loadArtifact("LimitOrderModule");
 
   const deploymentFee = await deployer.estimateDeployFee(LimitOrderModuleFactory, []);
-  if (deploymentFee.gte(0.3)) {
+  const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
+  if (Number(parsedFee) >= 0.3) {
     console.log('too much fee, revert!')
     return
   }
-  const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
   console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
 
   const limitOrderModule = await deployer.deploy(LimitOrderModuleFactory, []);
