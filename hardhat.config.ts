@@ -1,6 +1,7 @@
 require("@matterlabs/hardhat-zksync-deploy");
 require("@matterlabs/hardhat-zksync-solc");
 require("@nomicfoundation/hardhat-toolbox");
+require('hardhat-contract-sizer');
 
 module.exports = {
   zksolc: {
