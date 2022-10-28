@@ -3,6 +3,8 @@ node_modules/*
 package-lock.json
 yarn.lock
 artifacts/*
+artifacts-zk/*
 cache/*
+cache-zk/*
 .DS_store
 

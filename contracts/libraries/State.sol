@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.16;
 
 struct State {
     // a 96 fixpoing number describe the sqrt value of current price(tokenX/tokenY)
