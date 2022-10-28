@@ -16,6 +16,10 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const FlashModuleFactory = await deployer.loadArtifact("FlashModule");
 
   const deploymentFee = await deployer.estimateDeployFee(FlashModuleFactory, []);
+  if (deploymentFee.gte(0.3)) {
+      console.log('too much fee, revert!')
+      return
+  }
 
   const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
   console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
