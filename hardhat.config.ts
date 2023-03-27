@@ -1,6 +1,7 @@
 import "@matterlabs/hardhat-zksync-deploy";
 import "@matterlabs/hardhat-zksync-solc";
 import "@matterlabs/hardhat-zksync-verify";
+import {apiKey} from "./.secret";
 
 module.exports = {
   zksolc: {
@@ -20,10 +21,14 @@ module.exports = {
         url: "https://zksync2-mainnet.zksync.io",
 	ethNetwork: "https://mainnet.infura.io/v3/",
 	zksync: true,
+	verifyUrl: "https://zksync2-mainnet-explorer.zksync.io/contract_verification",
      }
   },
   solidity: {
       version: "0.8.17",
   },
+  etherscan: {
+      apiKey: apiKey,
+  }
 };
 
