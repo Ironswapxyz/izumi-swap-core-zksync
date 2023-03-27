@@ -17,7 +17,8 @@ export default async function (hre: HardhatRuntimeEnvironment) {
 
   const deploymentFee = await deployer.estimateDeployFee(SwapX2YModuleFactory, []);
   const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
-  if (Number(parsedFee) >= 0.3) {
+  console.log('fee: ', parsedFee);
+  if (Number(parsedFee) >= 0.1) {
     console.log('too much fee, revert!')
     return
   }

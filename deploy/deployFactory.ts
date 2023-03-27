@@ -19,7 +19,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
 
   // Initialize the wallet.
   const provider = new Provider(hre.userConfig.zkSyncDeploy?.zkSyncNetwork);
-  const wallet = new Wallet(sk);
+  const wallet = new Wallet(sk.toLowerCase());
 
   // Create deployer object and load the artifact of the contract you want to deploy.
   const deployer = new Deployer(hre, wallet);
@@ -32,17 +32,17 @@ export default async function (hre: HardhatRuntimeEnvironment) {
     contracts.liquidityModule, 
     contracts.limitOrderModule, 
     contracts.flashModule, 
-    fee
+    Number(fee)
   ]
   console.log('args: ', args)
   const deploymentFee = await deployer.estimateDeployFee(iZiSwapFactory, args);
   const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
-  if (Number(parsedFee) >= 0.3) {
-    console.log('too much fee, revert!')
-    return
-  }
+  //if (Number(parsedFee) >= 0.3) {
+  //  console.log('parsed fee: ', parsedFee);
+  //  console.log('too much fee, revert!')
+  //  return
+  //}
   console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
-
   const factory = await deployer.deploy(iZiSwapFactory, args);
 
   //obtain the Constructor Arguments
