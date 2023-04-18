@@ -13,9 +13,11 @@ module.exports = {
   defaultNetwork: "zkSyncMainnet",
   networks: {
      zkSyncTestnet: {
-        url: "https://zksync2-testnet.zksync.dev",
-        ethNetwork: "goerli", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
-        zksync: true,
+        url: "https://testnet.era.zksync.dev",
+        ethNetwork: 'https://goerli.infura.io/v3/',
+        //ethNetwork: "goerli", // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
+	zksync: true,
+	veirfyUrl: 'https://zksync2-testnet-explorer.zksync.dev/contract_verification',
      },
      zkSyncMainnet: {
         url: "https://zksync2-mainnet.zksync.io",
