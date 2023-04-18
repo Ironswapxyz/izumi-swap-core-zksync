@@ -16,5 +16,8 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "zksync-web3": "^0.13.1"
+  },
+  "dependencies": {
+    "package.json": "^2.0.1"
   }
 }
